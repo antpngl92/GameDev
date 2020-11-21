@@ -34835,10 +34835,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 296693108776251716, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 307062404383541030, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.071966
@@ -34887,33 +34883,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerController
       objectReference: {fileID: 0}
-    - target: {fileID: 408241920131584668, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 2685307458792432409, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2685307460318532139, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
-      propertyPath: takingDamage1
-      value: 
-      objectReference: {fileID: 8300000, guid: 9e4c5f2327fc67c49ac5c94471e3107a, type: 3}
-    - target: {fileID: 2685307460318532139, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
-      propertyPath: takingDamage2
-      value: 
-      objectReference: {fileID: 8300000, guid: e5afb3612f411224887c2576b4f8a2db, type: 3}
-    - target: {fileID: 2685307460318532139, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
-      propertyPath: takingDamage3
-      value: 
-      objectReference: {fileID: 8300000, guid: 2d07eba8eab06cb45898cb11da4a54e2, type: 3}
-    - target: {fileID: 4298903895315664881, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
-      propertyPath: movementSpeed
-      value: 11
+    - target: {fileID: 2685307458974026564, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 7112013161871511713, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 2685307459812885445, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 421894498407269774, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
-    - {fileID: 421497606446280028, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
+    - target: {fileID: 2685307459905364240, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685307460203400934, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685307460235369850, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685307460391652888, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685307460618693656, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5567e07442d7304d93aa8f9c1cdf5da, type: 3}
 --- !u!1001 &1487480904
 PrefabInstance:

@@ -31,8 +31,10 @@ public class PlayerMove : MonoBehaviour
             velocity.y = -2f;
         }
 
+
         float verticalMovement = Input.GetAxis("Vertical");
         float horizontalMovement = Input.GetAxis("Horizontal");
+
 
         Vector3 finalMovement = transform.right * horizontalMovement + transform.forward * verticalMovement;
 
