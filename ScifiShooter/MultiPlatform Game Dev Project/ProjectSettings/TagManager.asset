@@ -11,6 +11,7 @@ TagManager:
   - PickUpHealth
   - PickUpAmmo
   - Weapon
+  - Turret
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     private GameObject key;
     public GameObject enemy;
     private GameObject player;
-    public GameObject[] spawnPoints;
+/*    public GameObject[] spawnPoints;*/
     private int currentWaveLevel;
     public Text YouWonText;
     public Text YouLostText;
@@ -84,9 +84,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+
+    // Commented for now
     private void FixedUpdate()
     {
-        if (!isGameFinished && currentEnemyCount == 0 && currentWaveLevel >= 0 && currentWaveLevel < 3)
+/*        if (!isGameFinished && currentEnemyCount == 0 && currentWaveLevel >= 0 && currentWaveLevel < 3)
         {
             StartLevel(ref currentWaveLevel);
             Debug.Log(currentWaveLevel + " spawned");
@@ -101,10 +103,10 @@ public class GameController : MonoBehaviour
             
             player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
             
-        }
+        }*/
     }
 
-    // Handles logic relating to starting the current level
+/*    // Handles logic relating to starting the current level
     private void StartLevel(ref int currentWaveLevel)
     {
         currentWaveLevel++;
@@ -120,7 +122,7 @@ public class GameController : MonoBehaviour
                 currentEnemyCount++;
             }
         }
-    }
+    }*/
 
     public void OnEnemyDestroyed(GameObject enemy)
     {

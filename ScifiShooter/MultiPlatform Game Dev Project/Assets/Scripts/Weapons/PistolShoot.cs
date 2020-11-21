@@ -94,6 +94,11 @@ public class PistolShoot : MonoBehaviour
                     hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
                     Debug.Log("Enemy hit!");
                 }
+                else if (hit.transform.gameObject.tag == "Turret")
+                {
+                    hit.transform.gameObject.GetComponent<GatlingGun>().TakeDamage(damage);
+                    Debug.Log("Turret hit!");
+                }
                 else
                 {
                     Debug.Log("Hit!");

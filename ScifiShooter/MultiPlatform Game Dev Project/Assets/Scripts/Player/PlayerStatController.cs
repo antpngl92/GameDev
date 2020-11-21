@@ -19,12 +19,19 @@ public class PlayerStatController : MonoBehaviour
     public Text HealthText;
     public Text ArmorText;
     public Text LevelText;
+
+    public AudioSource audio;
+
+    public AudioClip takingDamage1;
+    public AudioClip takingDamage2;
+    public AudioClip takingDamage3;
     #endregion
 
     // Start is called before the first frame update
     private void Start()
     {
         //SetPlayerLevel(1);
+        audio = GetComponent<AudioSource>();
     }
 
     // Every wave, modify player statistics
@@ -60,6 +67,23 @@ public class PlayerStatController : MonoBehaviour
             Health -= damage;
         }
 
+
+        if (UnityEngine.Random.value < 0.1f)
+        {
+            audio.clip = takingDamage1;
+
+        }
+        else if (UnityEngine.Random.value < 0.2f)
+        {
+            audio.clip = takingDamage2;
+        }
+        else
+        {
+            audio.clip = takingDamage3;
+        }
+
+        audio.Play();
+
         UpdatePlayerStatsTexts();
 
         // If player dies
@@ -67,6 +91,7 @@ public class PlayerStatController : MonoBehaviour
         {
             Health = 0;
             Invoke(nameof(GameOver), 0.2f);
+            audio.Play();
         }
     }
 
@@ -76,11 +101,10 @@ public class PlayerStatController : MonoBehaviour
         UpdatePlayerStatsTexts();
     }
 
-    private void GameOver()
+    private void  GameOver()
     {        
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().GameLost();
-
-        //Destroy(gameObject);
+        /*Destroy(gameObject);*/
     }
 
     public void UpdateWaveText(int level)
@@ -91,7 +115,7 @@ public class PlayerStatController : MonoBehaviour
     public void FreezePlayer()
     {
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
-        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; //Currently giving an error that there is no ridgit body attached to player
         gameObject.GetComponent<PlayerMove>().enabled = false;
         //gameObject.GetComponent<Crouch>().enabled = false;
         gameObject.GetComponentInChildren<PistolShoot>().enabled = false;
