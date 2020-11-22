@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headbobSpeed: 13
-  bobbingAmount: 0.2
+  bobbingAmount: 0.15
   controller: {fileID: 7112013161871511713}
 --- !u!1 &309156531824827534
 GameObject:
@@ -330,6 +330,7 @@ MonoBehaviour:
   groundmask:
     serializedVersion: 2
     m_Bits: 256
+  jumpSound: {fileID: 8300000, guid: 01c97b38dbbdfb947aff7c91fff1efbe, type: 3}
 --- !u!114 &2685307460318532139
 MonoBehaviour:
   m_ObjectHideFlags: 0

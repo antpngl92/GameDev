@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    #region Variables
     [Header("Player Attributes")]
     public float movementSpeed = 10.0f;
     public float jumpHeight = 15.0f;
@@ -13,12 +14,17 @@ public class PlayerMove : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundmask;
 
+    public AudioClip jumpSound;
+
     private Vector3 velocity;
     private bool isGrounded;
+    private AudioSource audioSource;
+    #endregion
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,6 +49,10 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * fallSpeed);
+ 
+            audioSource.clip = jumpSound;
+            audioSource.Play();
+
         }
 
         velocity.y += fallSpeed * Time.deltaTime;
