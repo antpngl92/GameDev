@@ -15,21 +15,28 @@ public class PlayerMove : MonoBehaviour
     public LayerMask groundmask;
 
     public AudioClip jumpSound;
+    public AudioClip[] footstepSounds = new AudioClip[5];
+    public float footstepSoundDelay = 0.1f;
 
     private Vector3 velocity;
     private bool isGrounded;
-    private AudioSource audioSource;
+    private bool isMoving;
+    public AudioSource audioSource1;
+    public AudioSource audioSource2;
+
+    private bool isfootStepPlaying = false;
     #endregion
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        audioSource = GetComponent<AudioSource>();
+   
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Calculates if player is on the ground using the groundCheck gameobject
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundmask);
 
         if(isGrounded && velocity.y < 0)
@@ -37,27 +44,57 @@ public class PlayerMove : MonoBehaviour
             velocity.y = -2f;
         }
 
-
+        // Get movement input
         float verticalMovement = Input.GetAxis("Vertical");
         float horizontalMovement = Input.GetAxis("Horizontal");
 
+        isMoving = (Mathf.Abs(verticalMovement) > 0 || Mathf.Abs(horizontalMovement) > 0) ? true : false;
 
+        // Calculate movement
         Vector3 finalMovement = transform.right * horizontalMovement + transform.forward * verticalMovement;
 
         controller.Move(finalMovement * movementSpeed * Time.deltaTime);
 
+        // Jumping mechanic
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * fallSpeed);
  
-            audioSource.clip = jumpSound;
-            audioSource.Play();
+            audioSource1.clip = jumpSound;
+            audioSource1.Play();
 
         }
 
+        // If player is in the air, bring them down every frame
         velocity.y += fallSpeed * Time.deltaTime;
 
+        // Play footstep sound
+        if (isMoving && isGrounded)
+        {
+            if (!isfootStepPlaying)
+            {
+                PlayFootstepSounds();
+            }
+        }
+        
         controller.Move(velocity * Time.deltaTime);
+    }
 
+    void PlayFootstepSounds()
+    {
+        StartCoroutine(PlayFootsteps());
+    }
+
+    IEnumerator PlayFootsteps()
+    {
+        // Pick a random footstep sound
+        audioSource2.clip = footstepSounds[Random.Range(0, footstepSounds.Length)];
+        audioSource2.Play();
+
+        isfootStepPlaying = true;
+
+        yield return new WaitForSeconds(footstepSoundDelay);
+
+        isfootStepPlaying = false;
     }
 }
