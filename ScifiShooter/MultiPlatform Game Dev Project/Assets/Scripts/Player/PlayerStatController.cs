@@ -115,10 +115,11 @@ public class PlayerStatController : MonoBehaviour
     public void FreezePlayer()
     {
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
-        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; //Currently giving an error that there is no ridgit body attached to player
+        //gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; //Currently giving an error that there is no ridgit body attached to player
         gameObject.GetComponent<PlayerMove>().enabled = false;
         //gameObject.GetComponent<Crouch>().enabled = false;
         gameObject.GetComponentInChildren<PistolShoot>().enabled = false;
+        
     }
     
 }

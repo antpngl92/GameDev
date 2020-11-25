@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour
     private GameObject key;
     public GameObject enemy;
     private GameObject player;
-/*    public GameObject[] spawnPoints;*/
+    public GameObject[] spawnPointsEnemies;
+    public GameObject[] spawnPointsKey;
     private int currentWaveLevel;
     public Text YouWonText;
     public Text YouLostText;
@@ -48,26 +49,16 @@ public class GameController : MonoBehaviour
     // Generating keys at random spawn points.
     public void SpawnKey(int keysToSpawn)
     {
-        // Store spawn points in a list of coordinates
-        List<Vector3> coord = new List<Vector3>();
         Vector3 keyPosition = new Vector3(0, 0, 0);
-
-        coord.Add(new Vector3(-18f, 5.391f, 33f));
-        coord.Add(new Vector3(32f, 5.391f, 36f));
-        coord.Add(new Vector3(37f, 1f, 1.23f));
-        coord.Add(new Vector3(-16.18f, 1f, 30.6f));
-        coord.Add(new Vector3(48f, 1f, 48f));
-        coord.Add(new Vector3(14f, 3.742f, 6.5f));
-        coord.Add(new Vector3(26f, 1f, 36f));
-
+        var sp = spawnPointsKey.ToList();
         // Randomly choose spawn points for every key
         for (int i = 0; i < keysToSpawn; i++) 
         {
-            var index = UnityEngine.Random.Range(0, coord.Count);
-            Instantiate(key, coord.ElementAt(index), Quaternion.identity);            
+            var index = UnityEngine.Random.Range(0, sp.Count());
+            Instantiate(key, sp.ElementAt(index).transform.position, Quaternion.identity);            
             spawnedKeys++;
             Debug.Log("spawned " + spawnedKeys);
-            coord.Remove(coord.ElementAt(index));
+            sp.Remove(sp.ElementAt(index));
         }
     }
 
@@ -88,7 +79,7 @@ public class GameController : MonoBehaviour
     // Commented for now
     private void FixedUpdate()
     {
-/*        if (!isGameFinished && currentEnemyCount == 0 && currentWaveLevel >= 0 && currentWaveLevel < 3)
+        if (!isGameFinished && currentEnemyCount == 0 && currentWaveLevel >= 0 && currentWaveLevel < 3)
         {
             StartLevel(ref currentWaveLevel);
             Debug.Log(currentWaveLevel + " spawned");
@@ -103,26 +94,26 @@ public class GameController : MonoBehaviour
             
             player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
             
-        }*/
+        }
     }
 
-/*    // Handles logic relating to starting the current level
+    // Handles logic relating to starting the current level
     private void StartLevel(ref int currentWaveLevel)
     {
         currentWaveLevel++;
 
         player.GetComponent<PlayerStatController>().SetPlayerLevel(currentWaveLevel);
         //SpawnEnemies();
-        foreach (var sp in spawnPoints)
+        foreach (var sp in spawnPointsEnemies)
         {
-            if (sp == spawnPoints.First() || (UnityEngine.Random.Range(0, 1f) < 0.3 * currentWaveLevel))
+            if (sp == spawnPointsEnemies.First() || (UnityEngine.Random.Range(0, 1f) < 0.3 * currentWaveLevel))
             {
                 var ene = Instantiate(enemy, sp.transform.position, sp.transform.rotation);
-                ene.GetComponent<EnemyController>().Init(currentWaveLevel);
+                ene.GetComponent<EnemyController>().Start(currentWaveLevel);
                 currentEnemyCount++;
             }
         }
-    }*/
+    }
 
     public void OnEnemyDestroyed(GameObject enemy)
     {

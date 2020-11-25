@@ -25,7 +25,7 @@ public class PickUps : MonoBehaviour
         needKey = 3;
         keyCount.text = "";
         SetCountText();
-        //GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SpawnKey(needKey);
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SpawnKey(needKey);
         pickUpSound = gameObject.GetComponent<AudioSource>();
     }
 
@@ -65,6 +65,6 @@ public class PickUps : MonoBehaviour
     // UI Update Method
     private void SetCountText()
     {
-        keyCount.text = "Keys Collected: " + haveKey.ToString() + " / "+ needKey.ToString();
+        keyCount.text = "Energy Cells Collected: " + haveKey.ToString() + " / "+ needKey.ToString();
     }
 }

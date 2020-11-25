@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour
     private bool isPlayerInSightRange;
     private bool isPlayerInAttackRange;
 
-    private AudioSource hitPlayerSound;
+    public AudioSource hitPlayerSound;
 
     public enum AIBehavior { Idle, Patrol, Follow, Attack };
     public AIBehavior CurrentAI;
@@ -58,14 +58,13 @@ public class EnemyController : MonoBehaviour
     //public bool ShowAttackRange = true;
     //public bool ShowAlertRange = true;
 
-    public void Init(int level)
+    public void Start(int level)
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameController = GameObject.FindGameObjectWithTag("GameController");
         enemyNavMesh = GetComponent<NavMeshAgent>();
         CurrentAI = AIBehavior.Idle;
-        allowEnemyPatrol = true;
-        hitPlayerSound = GetComponent<AudioSource>();
+        allowEnemyPatrol = true;        
         SetEnemyLevel(level);
     }
 
@@ -103,6 +102,8 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        enemyNavMesh = GetComponent<NavMeshAgent>();
         // Handling AI behaviour
         isPlayerInSightRange = Physics.CheckSphere(transform.position, AiSightRange, PlayerLayerMask);
         isPlayerInAttackRange = Physics.CheckSphere(transform.position, AiAttackRange, PlayerLayerMask);
@@ -146,7 +147,9 @@ public class EnemyController : MonoBehaviour
 
             // AI Following Player
             case AIBehavior.Follow:
+                
                 enemyNavMesh.SetDestination(player.transform.position);
+                
                 Debug.DrawLine(transform.position, player.transform.position, Color.yellow);
                 break;
             
@@ -154,6 +157,7 @@ public class EnemyController : MonoBehaviour
             case AIBehavior.Attack:
 
                 // Find player and look at them
+ 
                 enemyNavMesh.SetDestination(transform.position);
                 transform.LookAt(player.transform);
                 Debug.DrawLine(transform.position, player.transform.position, Color.red);
@@ -232,7 +236,7 @@ public class EnemyController : MonoBehaviour
             var ammoPickUp = GameObject.FindGameObjectWithTag("PickUpAmmo");
             Instantiate(ammoPickUp, new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z), transform.rotation);
         }
-
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         gameController.GetComponent<GameController>().OnEnemyDestroyed(gameObject); 
         Destroy(gameObject);
     }
