@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject key;
     public GameObject enemy;
+    public int NumberOfTurrets;
     private GameObject player;
     public GameObject[] spawnPointsEnemies;
     public GameObject[] spawnPointsKey;
@@ -85,8 +86,13 @@ public class GameController : MonoBehaviour
             Debug.Log(currentWaveLevel + " spawned");
         }
 
-        if (!isGameFinished && currentEnemyCount == 0 && currentWaveLevel >= 3)
+        if (!isGameFinished && currentEnemyCount <= 0 && currentWaveLevel >= 3)
         {
+            if (currentEnemyCount < 0) 
+            {
+                Debug.Log("Check the enemy count it is bugged!");
+            }
+
             if (allKeysCollected)
             {
                 GameWon();
@@ -106,18 +112,24 @@ public class GameController : MonoBehaviour
         //SpawnEnemies();
         foreach (var sp in spawnPointsEnemies)
         {
-            if (sp == spawnPointsEnemies.First() || (UnityEngine.Random.Range(0, 1f) < 0.3 * currentWaveLevel))
+            if (sp == spawnPointsEnemies.First() || (UnityEngine.Random.Range(0, 1f) < 0.5 * currentWaveLevel))
             {
                 var ene = Instantiate(enemy, sp.transform.position, sp.transform.rotation);
-                ene.GetComponent<EnemyController>().Start(currentWaveLevel);
+                ene.GetComponent<EnemyController>().StartEnemies(currentWaveLevel);
                 currentEnemyCount++;
             }
         }
+
     }
 
     public void OnEnemyDestroyed(GameObject enemy)
     {
         //We might decrease the count of different enemy types.
+        if (enemy.tag == "Turret")
+        {
+            return; //No need to decrease enemy count if it is a turret
+        }
+
         currentEnemyCount--;
         if (currentEnemyCount == 0 && currentWaveLevel == 3)
         {

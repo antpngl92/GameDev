@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 6011889406488080396}
   - component: {fileID: 6011889406488080398}
   m_Layer: 0
-  m_Name: Robo1
+  m_Name: RoboReadyToUse
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   NameText: {fileID: 6819945422367043766}
   healthBar: {fileID: 6819945421281747545}
   Level: 1
-  Health: 10
+  Health: 100
   Armor: 0.1
   EnemyDamagePower: 20
   GroundLayerMask:
@@ -275,7 +275,7 @@ MonoBehaviour:
   WalkingPointRange: 5
   AttackInterval: 1
   AiSightRange: 20
-  AiAttackRange: 3
+  AiAttackRange: 2
   hitPlayerSound: {fileID: 2711359269913234757}
   CurrentAI: 0
   allowEnemyPatrol: 1
@@ -401,10 +401,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8
+  m_Radius: 0.61205363
+  m_Height: 3.1273232
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: -0.024365187, y: 1.5636616, z: 0.13641882}
 --- !u!195 &6011889406488080398
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -875,6 +875,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 515977272808906469, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 515977272931807784, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -974,6 +978,34 @@ PrefabInstance:
     - target: {fileID: 515977272931807785, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
       propertyPath: m_Name
       value: Enemy UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 515977273054592306, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 515977273054592317, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 515977273878519124, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515977273878519124, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 515977273878519124, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515977273878519124, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515977274162719927, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2605949ff24f2ce4993b2f280e8d671c, type: 3}

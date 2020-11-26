@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCount: {fileID: 2685307458784332397}
+  pickUpSound: {fileID: 0}
 --- !u!82 &2685307458659814635
 AudioSource:
   m_ObjectHideFlags: 0
@@ -482,7 +483,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4544cd1f9b0d00a498e3602ecfffcacc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.842
   m_Pitch: 1
