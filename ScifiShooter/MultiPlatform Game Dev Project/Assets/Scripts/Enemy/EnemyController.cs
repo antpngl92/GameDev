@@ -45,6 +45,7 @@ public class EnemyController : MonoBehaviour
 
     private bool isPlayerInSightRange;
     private bool isPlayerInAttackRange;
+    private Animator animator;
 
     public AudioSource hitPlayerSound;
 
@@ -58,7 +59,7 @@ public class EnemyController : MonoBehaviour
     //public bool ShowAttackRange = true;
     //public bool ShowAlertRange = true;
 
-    public void Start(int level)
+    public void StartEnemies(int level)
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameController = GameObject.FindGameObjectWithTag("GameController");
@@ -66,6 +67,7 @@ public class EnemyController : MonoBehaviour
         CurrentAI = AIBehavior.Idle;
         allowEnemyPatrol = true;        
         SetEnemyLevel(level);
+        animator = this.gameObject.GetComponent<Animator>();
     }
 
 
@@ -81,7 +83,7 @@ public class EnemyController : MonoBehaviour
         healthBar.value = Health;
         enemyNavMesh.speed = 5 + ((float)Level / 2);
         enemyNavMesh.acceleration = 2 + ((float)Level / 5);
-        NameText.text = "Level " + Level + " Monster";
+        NameText.text = "Level " + Level + " Robot";
         
         if (Level == 1)
         {
@@ -108,6 +110,11 @@ public class EnemyController : MonoBehaviour
         isPlayerInSightRange = Physics.CheckSphere(transform.position, AiSightRange, PlayerLayerMask);
         isPlayerInAttackRange = Physics.CheckSphere(transform.position, AiAttackRange, PlayerLayerMask);
         CurrentAI = AIBehavior.Attack;
+
+        if (Health <= 0)
+        {
+            return;
+        }
         
         // Perform actions based on where the player is 
         if (isPlayerInAttackRange && isPlayerInSightRange)
@@ -207,23 +214,30 @@ public class EnemyController : MonoBehaviour
         if (Armor > 0 )
         {
             Health -= Mathf.RoundToInt((float)damage * (1 - Armor));
+
         }
         else
         {
             Health -= damage;
+
         }
-        
+
+        animator.Play("Base Layer.GettingDamage");
         healthBar.value = Health;
         
         if (Health <= 0)
         {
-            Invoke(nameof(DestroyEnemy), 0.5f);            
+            Invoke(nameof(DestroyEnemy), 0.05f);            
         }
     }
 
     // If enemy dies
     private void DestroyEnemy()
     {
+
+        animator.Play("Base Layer.Die");
+        this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        
         // Randomly generate health pickups upon death
         if (UnityEngine.Random.value < 0.1f)
         {
@@ -237,7 +251,15 @@ public class EnemyController : MonoBehaviour
             Instantiate(ammoPickUp, new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z), transform.rotation);
         }
         gameController = GameObject.FindGameObjectWithTag("GameController");
-        gameController.GetComponent<GameController>().OnEnemyDestroyed(gameObject); 
+        gameController.GetComponent<GameController>().OnEnemyDestroyed(gameObject);
+
+        
+        Invoke("DeleteEnemy", 0.3f);
+
+    }
+
+    private void DeleteEnemy()
+    {
         Destroy(gameObject);
     }
 

@@ -15,7 +15,7 @@ public class PickUps : MonoBehaviour
 
     // UI element and sound
     public Text keyCount;
-    private AudioSource pickUpSound;
+    public AudioSource pickUpSound;
     #endregion
 
     // Start is called before the first frame update
@@ -26,7 +26,6 @@ public class PickUps : MonoBehaviour
         keyCount.text = "";
         SetCountText();
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SpawnKey(needKey);
-        pickUpSound = gameObject.GetComponent<AudioSource>();
     }
 
 

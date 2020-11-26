@@ -137,7 +137,7 @@ public class PistolShoot : MonoBehaviour
 
     public void OnAmmoPickedUp()
     {
-        currentMagAmmo += 20;
+        currentReserveAmmo += 20;
     }
 
     public void OnLeveledUp(int currentWaveLevel)
@@ -172,6 +172,9 @@ public class PistolShoot : MonoBehaviour
     {
         currentLineEffect.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        currentLineEffect.SetActive(false);
+        foreach (var lineEffect in allLineEffects)
+        {
+            lineEffect.SetActive(false);
+        }
     }
 }
