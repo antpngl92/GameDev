@@ -26,8 +26,13 @@ public class PistolShoot : MonoBehaviour
     public AudioClip shootSound;
     public GameObject currentLineEffect;
     public GameObject[] allLineEffects;
+
+    public LineRenderer laserEffect;
     public Text magAmmoText;
     public Text reserveAmmoText;
+
+    public Transform muzzleEnd;
+    public ParticleSystem muzzleEffect;
  
     [Space()]
 
@@ -38,6 +43,7 @@ public class PistolShoot : MonoBehaviour
     private Vector3 originPosition;
     private Vector3 recoilOffset;
     private Vector3 rotation;
+    private RaycastHit laserHit;
 
     #endregion
     // Start is called before the first frame update
@@ -47,7 +53,8 @@ public class PistolShoot : MonoBehaviour
         currentMagAmmo = maxMagAmmo;
         currentReserveAmmo = maxReserveAmmo;
         originPosition = transform.position;
-        currentLineEffect.SetActive(false);
+        //currentLineEffect.SetActive(false);
+        muzzleEffect.Stop();
     }
 
     // Update is called once per frame
@@ -78,7 +85,7 @@ public class PistolShoot : MonoBehaviour
             DisplayRecoil();
             RecoilRecovery();
 
-            StartCoroutine("ShootEffect");
+            muzzleEffect.Play();
 
             // Play Shooting Sound
             audioSource.clip = shootSound;
@@ -89,6 +96,7 @@ public class PistolShoot : MonoBehaviour
             // If the ray hit something
             if (Physics.Raycast(ray, camera.transform.forward, out hit, weaponRange))
             {
+                laserHit = hit;
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
                     hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
@@ -166,6 +174,19 @@ public class PistolShoot : MonoBehaviour
        
        // Set recovery Rotation
        transform.localRotation = Quaternion.Euler(rotation);
+    }
+
+    IEnumerator WeaponEffect()
+    {
+        if (!laserEffect.enabled)
+        {
+            laserEffect.SetPosition(0, muzzleEnd.localPosition);
+            laserEffect.SetPosition(1, muzzleEnd.localPosition + new Vector3(0, 0, 100));
+            muzzleEffect.Play();
+            laserEffect.enabled = true;
+            yield return new WaitForSeconds(0.1f);
+            laserEffect.enabled = false;
+        }
     }
 
     IEnumerator ShootEffect()

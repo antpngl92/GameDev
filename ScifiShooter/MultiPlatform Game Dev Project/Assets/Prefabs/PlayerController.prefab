@@ -252,7 +252,6 @@ GameObject:
   - component: {fileID: 2685307460318532139}
   - component: {fileID: 2685307460525603092}
   - component: {fileID: 2685307458659814635}
-  - component: {fileID: 7346803580453006364}
   m_Layer: 9
   m_Name: PlayerController
   m_TagString: Player
@@ -304,7 +303,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309156531824827534}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1.8
@@ -339,8 +338,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2921c47b0bdded540b5b813c1e60001c, type: 3}
   - {fileID: 8300000, guid: 825d688f717750646b0a05cb2db4ae16, type: 3}
   footstepSoundDelay: 0.5
-  audioSource1: {fileID: 2685307458659814635}
-  audioSource2: {fileID: 7346803580453006364}
+  audioSource: {fileID: 0}
 --- !u!114 &2685307460318532139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +357,7 @@ MonoBehaviour:
   HealthText: {fileID: 2685307459766081256}
   ArmorText: {fileID: 2685307459212398947}
   LevelText: {fileID: 2685307460506107369}
-  audio: {fileID: 0}
+  audio: {fileID: 2685307458659814635}
   takingDamage1: {fileID: 8300000, guid: 9e4c5f2327fc67c49ac5c94471e3107a, type: 3}
   takingDamage2: {fileID: 8300000, guid: e5afb3612f411224887c2576b4f8a2db, type: 3}
   takingDamage3: {fileID: 8300000, guid: 2d07eba8eab06cb45898cb11da4a54e2, type: 3}
@@ -387,105 +385,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 186f0e1c3a06ce148b09b625ec394faa, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2d07eba8eab06cb45898cb11da4a54e2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.547
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &7346803580453006364
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309156531824827534}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4544cd1f9b0d00a498e3602ecfffcacc, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.842
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1183,7 +1085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1678c42a2b8b644588861853f7abf64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 50
   maxMagAmmo: 20
   maxReserveAmmo: 200
   currentMagAmmo: 20
@@ -1198,8 +1100,10 @@ MonoBehaviour:
   - {fileID: 2685307460391652888}
   - {fileID: 2685307459905364240}
   - {fileID: 2685307459812885445}
+  laserEffect: {fileID: 0}
   magAmmoText: {fileID: 309645716759841911}
   reserveAmmoText: {fileID: 309645718208785862}
+  muzzleEnd: {fileID: 0}
 --- !u!82 &2685307458870742605
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2022,13 +1926,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2685307460391652891}
   - component: {fileID: 2685307460391652890}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2685307460391652891
 Transform:
   m_ObjectHideFlags: 0

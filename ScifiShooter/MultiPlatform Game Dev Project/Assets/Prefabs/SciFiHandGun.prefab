@@ -318,7 +318,8 @@ MonoBehaviour:
   recoilIntensity: 15
   camera: {fileID: 0}
   shootSound: {fileID: 8300000, guid: a78e9f0701cc072448aff090903693f5, type: 3}
-  lineEffect: {fileID: 0}
+  currentLineEffect: {fileID: 0}
+  allLineEffects: []
   magAmmoText: {fileID: 0}
   reserveAmmoText: {fileID: 0}
 --- !u!82 &4516663437034184615

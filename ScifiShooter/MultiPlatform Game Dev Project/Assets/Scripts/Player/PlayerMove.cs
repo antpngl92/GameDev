@@ -21,8 +21,7 @@ public class PlayerMove : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private bool isMoving;
-    public AudioSource audioSource1;
-    public AudioSource audioSource2;
+    public AudioSource audioSource;
 
     private bool isfootStepPlaying = false;
     #endregion
@@ -60,8 +59,8 @@ public class PlayerMove : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * fallSpeed);
  
-            audioSource1.clip = jumpSound;
-            audioSource1.Play();
+            audioSource.clip = jumpSound;
+            audioSource.Play();
 
         }
 
@@ -88,8 +87,8 @@ public class PlayerMove : MonoBehaviour
     IEnumerator PlayFootsteps()
     {
         // Pick a random footstep sound
-        audioSource2.clip = footstepSounds[Random.Range(0, footstepSounds.Length)];
-        audioSource2.Play();
+        audioSource.clip = footstepSounds[Random.Range(0, footstepSounds.Length)];
+        audioSource.Play();
 
         isfootStepPlaying = true;
 
