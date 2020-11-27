@@ -25,12 +25,10 @@ public class PistolShoot : MonoBehaviour
     [Header("Related GameObjects")]
     public Camera camera;
     public AudioClip shootSound;
-    public GameObject currentLineEffect;
-    public GameObject[] allLineEffects;
 
-    public LineRenderer laserEffect;
     public Text magAmmoText;
     public Text reserveAmmoText;
+    public Text reloadingWeaponText;
 
     public Transform muzzleEnd;
     public ParticleSystem muzzleEffect;
@@ -46,7 +44,6 @@ public class PistolShoot : MonoBehaviour
     private Vector3 originPosition;
     private Vector3 recoilOffset;
     private Vector3 rotation;
-    private RaycastHit laserHit;
 
     #endregion
     // Start is called before the first frame update
@@ -58,12 +55,16 @@ public class PistolShoot : MonoBehaviour
         originPosition = transform.position;
         //currentLineEffect.SetActive(false);
         muzzleEffect.Stop();
+        reloadingWeaponText.enabled = false;
     }
 
     void OnEnable()
     {
         isReloading = false;
+        audioSource.Stop();
         animator.SetBool("IsReloading", false);
+        muzzleEffect.Stop();
+        reloadingWeaponText.enabled = false;
     }
 
     // Update is called once per frame
@@ -110,7 +111,6 @@ public class PistolShoot : MonoBehaviour
             // If the ray hit something
             if (Physics.Raycast(ray, camera.transform.forward, out hit, weaponRange))
             {
-                laserHit = hit;
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
                     hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
@@ -166,6 +166,14 @@ public class PistolShoot : MonoBehaviour
 
     void UpdateUI()
     {
+        if (isReloading)
+        {
+            reloadingWeaponText.enabled = true;
+        }
+        else if (!isReloading)
+        {
+            reloadingWeaponText.enabled = false;
+        }
         magAmmoText.text = currentMagAmmo.ToString();
         reserveAmmoText.text = currentReserveAmmo.ToString() + " -R-";
     }
@@ -182,7 +190,6 @@ public class PistolShoot : MonoBehaviour
         maxReserveAmmo += 30;
         fireRate -= 0.005f;
         recoilIntensity -= 0.005f;
-        currentLineEffect = allLineEffects[currentWaveLevel - 1];
     }
 
     void DisplayRecoil()

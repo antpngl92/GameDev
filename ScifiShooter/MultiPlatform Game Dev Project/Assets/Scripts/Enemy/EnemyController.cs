@@ -48,6 +48,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
 
     public AudioSource hitPlayerSound;
+    public ParticleSystem deathEffect;
 
     public enum AIBehavior { Idle, Patrol, Follow, Attack };
     public AIBehavior CurrentAI;
@@ -58,6 +59,11 @@ public class EnemyController : MonoBehaviour
     //[Header("DEBUG")]
     //public bool ShowAttackRange = true;
     //public bool ShowAlertRange = true;
+
+    void Start()
+    {
+        deathEffect.Stop();
+    }
 
     public void StartEnemies(int level)
     {
@@ -234,7 +240,7 @@ public class EnemyController : MonoBehaviour
     // If enemy dies
     private void DestroyEnemy()
     {
-
+        deathEffect.Play();
         animator.Play("Base Layer.Die");
         this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         
