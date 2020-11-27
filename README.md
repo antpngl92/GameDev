@@ -16,6 +16,7 @@
 ## Weapon 
 [Weapon Model](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-futuristic-hand-gun-90249)  
 [Weapon Swaying method](https://www.youtube.com/watch?v=6hyQ2rPkMDY&t=125s)  
+[Weapon reload animating method](https://www.youtube.com/watch?v=SyGgAwBydTw)  
 
 ## Enemies
 [Gatling Gun Turret](https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-barrel-175837)  
@@ -38,6 +39,10 @@
 [Sci-fi Barrel](https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-barrel-175837)  
 [Sci-fi Objects](https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-objects-pack-1-170478)  
 [3D Sci-fi ATM](https://assetstore.unity.com/packages/3d/environments/sci-fi/atm-95057)  
+
+## Shaders and other VFX
+[Shaders](https://assetstore.unity.com/packages/vfx/shaders/ultimate-10-shaders-168611)  
+[Particle Collection](https://assetstore.unity.com/packages/vfx/particles/sherbb-s-particle-collection-170798#content)  
 
 Game Controller  
 Enemy Controller (Except path finding)  

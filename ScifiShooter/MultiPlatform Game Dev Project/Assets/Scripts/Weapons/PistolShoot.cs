@@ -17,6 +17,7 @@ public class PistolShoot : MonoBehaviour
     public int currentMagAmmo;
     public int currentReserveAmmo;
     public int weaponRange;
+    public float reloadTime = 1.0f;
     public float fireRate = 0.2f;
     public float recoilIntensity = 10f;
     [Space()]
@@ -33,10 +34,12 @@ public class PistolShoot : MonoBehaviour
 
     public Transform muzzleEnd;
     public ParticleSystem muzzleEffect;
+    public Animator animator;
  
     [Space()]
 
     private float fireDelay;
+    public bool isReloading = false;
 
     private AudioSource audioSource;
 
@@ -57,6 +60,12 @@ public class PistolShoot : MonoBehaviour
         muzzleEffect.Stop();
     }
 
+    void OnEnable()
+    {
+        isReloading = false;
+        animator.SetBool("IsReloading", false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -72,6 +81,11 @@ public class PistolShoot : MonoBehaviour
 
     void Shoot()
     {
+        if (isReloading)
+        {
+            return;
+        }
+
         // If user presses Fire1 (LMB) and they can shoot
         if (Input.GetMouseButton(0) && Time.time > fireDelay && currentMagAmmo > 0)
         {
@@ -100,16 +114,16 @@ public class PistolShoot : MonoBehaviour
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
                     hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
-                    Debug.Log("Enemy hit!");
+                    //Debug.Log("Enemy hit!");
                 }
                 else if (hit.transform.gameObject.tag == "Turret")
                 {
                     hit.transform.gameObject.GetComponent<GatlingGun>().TakeDamage(damage);
-                    Debug.Log("Turret hit!");
+                    //Debug.Log("Turret hit!");
                 }
                 else
                 {
-                    Debug.Log("Hit!");
+                    //Debug.Log("Hit!");
                 }
             }
         }
@@ -120,21 +134,34 @@ public class PistolShoot : MonoBehaviour
         // If the user has ammo to reload with, and if they have shot at least once
         if (Input.GetKeyDown(KeyCode.R) && currentReserveAmmo > 0 && currentMagAmmo != maxMagAmmo)
         {
-            // Calculate how many bullets were fired from the gun
-            int magDiff = Math.Abs(currentMagAmmo - maxMagAmmo);
-
-            // If the user has some ammo left, but they don't have enough to refill the whole mag
-            if (magDiff >= currentReserveAmmo)
-            {
-                currentMagAmmo = currentReserveAmmo;
-                currentReserveAmmo = 0;
-            }
-            else
-            {
-                currentReserveAmmo -= magDiff;
-                currentMagAmmo = maxMagAmmo;
-            }
+            Debug.Log("Reloading");
+            StartCoroutine("ReloadCoroutine");
         }
+    }
+
+    IEnumerator ReloadCoroutine()
+    {
+        isReloading = true;
+        animator.SetBool("IsReloading", true);
+        // Calculate how many bullets were fired from the gun
+        int magDiff = Math.Abs(currentMagAmmo - maxMagAmmo);
+
+        yield return new WaitForSeconds(reloadTime - 0.25f);
+
+        // If the user has some ammo left, but they don't have enough to refill the whole mag
+        if (magDiff >= currentReserveAmmo)
+        {
+            currentMagAmmo = currentReserveAmmo;
+            currentReserveAmmo = 0;
+        }
+        else
+        {
+            currentReserveAmmo -= magDiff;
+            currentMagAmmo = maxMagAmmo;
+        }
+        animator.SetBool("IsReloading", false);
+        yield return new WaitForSeconds(0.25f);
+        isReloading = false;
     }
 
     void UpdateUI()
@@ -174,28 +201,5 @@ public class PistolShoot : MonoBehaviour
        
        // Set recovery Rotation
        transform.localRotation = Quaternion.Euler(rotation);
-    }
-
-    IEnumerator WeaponEffect()
-    {
-        if (!laserEffect.enabled)
-        {
-            laserEffect.SetPosition(0, muzzleEnd.localPosition);
-            laserEffect.SetPosition(1, muzzleEnd.localPosition + new Vector3(0, 0, 100));
-            muzzleEffect.Play();
-            laserEffect.enabled = true;
-            yield return new WaitForSeconds(0.1f);
-            laserEffect.enabled = false;
-        }
-    }
-
-    IEnumerator ShootEffect()
-    {
-        currentLineEffect.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        foreach (var lineEffect in allLineEffects)
-        {
-            lineEffect.SetActive(false);
-        }
     }
 }
