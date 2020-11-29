@@ -32,7 +32,7 @@ public class PickUps : MonoBehaviour
     // If PlayerController collides with something
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collided ==================================== " + other.gameObject.name);
+        //Debug.Log("Collided ==================================== " + other.gameObject.name);
         // Handles Key Pickup
         if (other.gameObject.tag == "PickUpKey")
         {

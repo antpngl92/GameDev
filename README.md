@@ -8,6 +8,9 @@
 [Item Pickup](http://freesoundeffect.net/sound/pickup-generic-pickup-sfx-collection-item-2-sound-effect)  
 [Laser Shoot](https://freesound.org/people/MusicLegends/sounds/344310/)  
 [Footstep sounds](https://assetstore.unity.com/packages/audio/sound-fx/classic-footstep-sfx-173668)  
+[Machine Gun](http://soundbible.com/1804-M4A1-Single.html)  
+[Shotgun](http://soundbible.com/1960-Shotgun-Old-School.html)  
+[Dry Fire](http://soundbible.com/1405-Dry-Fire-Gun.html)  
 
 ## First Person Controller 
 [Tutorial for Movement](https://www.youtube.com/watch?v=_QajrabyTJc)  

@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
             var index = UnityEngine.Random.Range(0, sp.Count());
             Instantiate(key, sp.ElementAt(index).transform.position, Quaternion.identity);            
             spawnedKeys++;
-            Debug.Log("spawned " + spawnedKeys);
+            //Debug.Log("spawned " + spawnedKeys);
             sp.Remove(sp.ElementAt(index));
         }
     }

@@ -11,6 +11,7 @@ public class PistolShoot : MonoBehaviour
     #region Variables
 
     [Header("Gun Statistics")]
+    public string name = "Plasma Pistol";
     public int damage;
     public int maxMagAmmo;
     public int maxReserveAmmo;
@@ -25,7 +26,9 @@ public class PistolShoot : MonoBehaviour
     [Header("Related GameObjects")]
     public Camera camera;
     public AudioClip shootSound;
+    public AudioClip noAmmo;
 
+    public Text weaponNameText;
     public Text magAmmoText;
     public Text reserveAmmoText;
     public Text reloadingWeaponText;
@@ -39,7 +42,7 @@ public class PistolShoot : MonoBehaviour
     private float fireDelay;
     public bool isReloading = false;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     private Vector3 originPosition;
     private Vector3 recoilOffset;
@@ -65,6 +68,7 @@ public class PistolShoot : MonoBehaviour
         animator.SetBool("IsReloading", false);
         muzzleEffect.Stop();
         reloadingWeaponText.enabled = false;
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -88,8 +92,14 @@ public class PistolShoot : MonoBehaviour
         }
 
         // If user presses Fire1 (LMB) and they can shoot
-        if (Input.GetMouseButton(0) && Time.time > fireDelay && currentMagAmmo > 0)
+        if (Input.GetMouseButton(0) && Time.time > fireDelay)
         {
+            if (currentMagAmmo <= 0)
+            {
+                audioSource.clip = noAmmo;
+                audioSource.Play();
+                return;
+            }
             // Calculate new delay timer to control firerate
             fireDelay = Time.time + fireRate;
 
@@ -176,6 +186,7 @@ public class PistolShoot : MonoBehaviour
         }
         magAmmoText.text = currentMagAmmo.ToString();
         reserveAmmoText.text = currentReserveAmmo.ToString() + " -R-";
+        weaponNameText.text = name;
     }
 
     public void OnAmmoPickedUp()
