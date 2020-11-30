@@ -56,7 +56,23 @@ public class PickUps : MonoBehaviour
         else if (other.gameObject.tag == "PickUpAmmo")
         {
             other.gameObject.SetActive(false);
-            GameObject.FindGameObjectWithTag("Weapon").GetComponent<PistolShoot>().OnAmmoPickedUp();
+            
+            if(GameObject.FindGameObjectWithTag("Weapon").GetComponent<PistolShoot>() != null)
+            {
+                GameObject.FindGameObjectWithTag("Weapon").GetComponent<PistolShoot>().OnAmmoPickedUp();
+            }
+
+            if (GameObject.FindGameObjectWithTag("Weapon").GetComponent<ShotgunShoot>() != null)
+            {
+                GameObject.FindGameObjectWithTag("Weapon").GetComponent<ShotgunShoot>().OnAmmoPickedUp();
+            }
+
+            if (GameObject.FindGameObjectWithTag("Weapon").GetComponent<MachineGunShoot>() != null)
+            {
+                GameObject.FindGameObjectWithTag("Weapon").GetComponent<MachineGunShoot>().OnAmmoPickedUp();
+            }
+            
+          
             pickUpSound.Play();
         }
 

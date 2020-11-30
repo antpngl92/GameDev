@@ -138,6 +138,10 @@ public class ShotgunShoot : MonoBehaviour
             currentMagAmmo -= 1;
         }
     }
+    public void OnAmmoPickedUp()
+    {
+        currentReserveAmmo += 20;
+    }
 
     void Reload()
     {

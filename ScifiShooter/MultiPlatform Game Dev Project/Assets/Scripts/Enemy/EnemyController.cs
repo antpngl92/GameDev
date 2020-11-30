@@ -217,23 +217,28 @@ public class EnemyController : MonoBehaviour
     // AI Damage Handling script
     public void TakeDamage(int damage)
     {
+        if (Health <= 0)
+        {
+            return;
+        }
+
         if (Armor > 0 )
         {
-            Health -= Mathf.RoundToInt((float)damage * (1 - Armor));
+            var value = Mathf.RoundToInt((float)damage * (1 - Armor));
+            Health = Mathf.Clamp(Health - value, 0, 100);
 
         }
         else
         {
-            Health -= damage;
-
+            Health = Mathf.Clamp(Health - damage, 0, 100);
         }
 
         animator.Play("Base Layer.GettingDamage");
         healthBar.value = Health;
         
-        if (Health <= 0)
+        if (Health == 0)
         {
-            Invoke(nameof(DestroyEnemy), 0.05f);            
+            DestroyEnemy();
         }
     }
 
@@ -248,14 +253,15 @@ public class EnemyController : MonoBehaviour
         if (UnityEngine.Random.value < 0.1f)
         {
             var healthPickUp = GameObject.FindGameObjectWithTag("PickUpHealth");
-            Instantiate(healthPickUp, new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z), transform.rotation);
+            Instantiate(healthPickUp, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         }
         // Randomly generate ammo pickups upon death
         else if (UnityEngine.Random.value < 0.2f)
         {
             var ammoPickUp = GameObject.FindGameObjectWithTag("PickUpAmmo");
-            Instantiate(ammoPickUp, new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z), transform.rotation);
+            Instantiate(ammoPickUp, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
         }
+
         gameController = GameObject.FindGameObjectWithTag("GameController");
         gameController.GetComponent<GameController>().OnEnemyDestroyed(gameObject);
 

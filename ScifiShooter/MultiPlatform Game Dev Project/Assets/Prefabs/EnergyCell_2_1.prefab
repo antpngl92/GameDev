@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1464179855717443403}
   m_Layer: 0
   m_Name: EnergyCell_2_1
-  m_TagString: PickUpAmmo
+  m_TagString: PickUpKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

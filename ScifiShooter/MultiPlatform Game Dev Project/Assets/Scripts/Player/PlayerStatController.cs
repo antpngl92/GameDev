@@ -36,14 +36,15 @@ public class PlayerStatController : MonoBehaviour
 
     // Every wave, modify player statistics
     public void SetPlayerLevel(int currentWaveLevel)
-    {
+    {//TODO Ertugrul: Make this upgradeable
         Level = currentWaveLevel;
-        Health += Level * 30;
+        Health = Mathf.Clamp(Health + 30, 0, 100);
         Armor += Level * 0.1f;
         //gameObject.GetComponent<PlayerMove>().speed += currentWaveLevel * 0.5f;
         //This causes coupling so it is better to combine stat and movement after the prototype
-        GameObject.FindGameObjectWithTag("Weapon").GetComponent<PistolShoot>().OnLeveledUp(currentWaveLevel);
+     //   GameObject.FindGameObjectWithTag("Weapon").GetComponent<PistolShoot>().OnLeveledUp(currentWaveLevel);
         UpdatePlayerStatsTexts();
+       
     }
 
     // UI Update Method
@@ -64,7 +65,14 @@ public class PlayerStatController : MonoBehaviour
         }
         else
         {
-            Health -= damage;
+            if ((Health - damage) >= 0)
+            {
+                Health -= damage;
+            }
+            else
+            {
+                Health = 0;
+            }
         }
 
 
@@ -97,7 +105,9 @@ public class PlayerStatController : MonoBehaviour
 
     public void OnHealthPickedUp()
     {
-        Health += 30;
+            
+        Health = Mathf.Clamp(Health + 25, 0, 100);
+       
         UpdatePlayerStatsTexts();
     }
 
@@ -118,8 +128,22 @@ public class PlayerStatController : MonoBehaviour
         //gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; //Currently giving an error that there is no ridgit body attached to player
         gameObject.GetComponent<PlayerMove>().enabled = false;
         //gameObject.GetComponent<Crouch>().enabled = false;
-        gameObject.GetComponentInChildren<PistolShoot>().enabled = false;
         
+        if(gameObject.GetComponentInChildren<PistolShoot>() != null)
+        {
+            gameObject.GetComponentInChildren<PistolShoot>().enabled = false;
+        }
+
+        if (gameObject.GetComponentInChildren<MachineGunShoot>() != null)
+        {
+            gameObject.GetComponentInChildren<MachineGunShoot>().enabled = false;
+        }
+
+        if (gameObject.GetComponentInChildren<ShotgunShoot>() != null)
+        {
+            gameObject.GetComponentInChildren<ShotgunShoot>().enabled = false;
+        }
+
     }
     
 }

@@ -143,6 +143,11 @@ public class MachineGunShoot : MonoBehaviour
         }
     }
 
+    public void OnAmmoPickedUp()
+    {
+        currentReserveAmmo += 20;
+    }
+
     IEnumerator ReloadCoroutine()
     {
         isReloading = true;

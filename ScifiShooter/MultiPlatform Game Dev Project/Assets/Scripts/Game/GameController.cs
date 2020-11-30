@@ -64,8 +64,9 @@ public class GameController : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
+
+
+    private void Update()
     {
         // Reset game if player has won or lost the game.
         if (isGameFinished && Input.GetKeyDown(KeyCode.Space))
@@ -74,19 +75,15 @@ public class GameController : MonoBehaviour
             Start();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-    }
 
-
-    // Commented for now
-    private void FixedUpdate()
-    {
         if (!isGameFinished && currentEnemyCount == 0 && currentWaveLevel >= 0 && currentWaveLevel < 3)
         {
             StartLevel(ref currentWaveLevel);
             Debug.Log(currentWaveLevel + " spawned");
+            player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
         }
 
-        if (!isGameFinished && currentEnemyCount <= 0 && currentWaveLevel >= 3)
+        if (!isGameFinished && currentEnemyCount == 0 && currentWaveLevel == 3)
         {
             if (currentEnemyCount < 0) 
             {
@@ -98,7 +95,7 @@ public class GameController : MonoBehaviour
                 GameWon();
             }
             
-            player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
+            player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel + 1);
             
         }
     }
@@ -112,7 +109,7 @@ public class GameController : MonoBehaviour
         //SpawnEnemies();
         foreach (var sp in spawnPointsEnemies)
         {
-            if (sp == spawnPointsEnemies.First() || (UnityEngine.Random.Range(0, 1f) < 0.5 * currentWaveLevel))
+            if (sp == spawnPointsEnemies.First() || (UnityEngine.Random.Range(0, 1f) < (0.2 * currentWaveLevel)))
             {
                 var ene = Instantiate(enemy, sp.transform.position, sp.transform.rotation);
                 ene.GetComponent<EnemyController>().StartEnemies(currentWaveLevel);
@@ -129,12 +126,10 @@ public class GameController : MonoBehaviour
         {
             return; //No need to decrease enemy count if it is a turret
         }
-
-        currentEnemyCount--;
-        if (currentEnemyCount == 0 && currentWaveLevel == 3)
+        else
         {
-            currentWaveLevel++;
-            player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
+
+            currentEnemyCount--;
         }
     }
 
