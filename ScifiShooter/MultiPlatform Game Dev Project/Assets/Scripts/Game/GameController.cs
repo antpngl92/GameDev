@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour
     #region Variables
     [SerializeField]
     private GameObject key;
-    public GameObject enemy;
+    public GameObject enemy1;
+    public GameObject enemy2;
     public int NumberOfTurrets;
     private GameObject player;
     public GameObject[] spawnPointsEnemies;
@@ -111,7 +112,7 @@ public class GameController : MonoBehaviour
         {
             if (sp == spawnPointsEnemies.First() || (UnityEngine.Random.Range(0, 1f) < (0.2 * currentWaveLevel)))
             {
-                var ene = Instantiate(enemy, sp.transform.position, sp.transform.rotation);
+                var ene = Instantiate(UnityEngine.Random.Range(0, 1f) < 0.65 ? enemy1 : enemy2 , sp.transform.position, sp.transform.rotation);
                 ene.GetComponent<EnemyController>().StartEnemies(currentWaveLevel);
                 currentEnemyCount++;
             }

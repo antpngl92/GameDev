@@ -51662,6 +51662,14 @@ PrefabInstance:
       propertyPath: spawnPointsKey.Array.data[7]
       value: 
       objectReference: {fileID: 790134323}
+    - target: {fileID: 2162002281991960516, guid: 101ba01d6c8f35a4ca1550730eb6e03a, type: 3}
+      propertyPath: enemy2
+      value: 
+      objectReference: {fileID: 7884424822968339509, guid: ec81e0c08825569459fa6b5f9df2e6b4, type: 3}
+    - target: {fileID: 2162002281991960516, guid: 101ba01d6c8f35a4ca1550730eb6e03a, type: 3}
+      propertyPath: enemy1
+      value: 
+      objectReference: {fileID: 6011889406488080433, guid: 7fe540bb171496442b3d5ebbbbfd98cf, type: 3}
     - target: {fileID: 2162002281991960518, guid: 101ba01d6c8f35a4ca1550730eb6e03a, type: 3}
       propertyPath: m_Name
       value: GameController
