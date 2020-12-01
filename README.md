@@ -17,13 +17,18 @@
 [MouseLook script](https://assetstore.unity.com/packages/tools/input-management/mini-first-person-controller-174710)  
 
 ## Weapon 
-[Weapon Model](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-futuristic-hand-gun-90249)  
+[Plasma Pistol Model](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-futuristic-hand-gun-90249)  
+[Machine Gun Model](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-gun-light-87916)  
+[Shotgun Model](https://assetstore.unity.com/packages/3d/props/guns/shotgun-26685)  
 [Weapon Swaying method](https://www.youtube.com/watch?v=6hyQ2rPkMDY&t=125s)  
 [Weapon reload animating method](https://www.youtube.com/watch?v=SyGgAwBydTw)  
 
 ## Enemies
 [Gatling Gun Turret](https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-barrel-175837)  
 
+## Menus
+[Main Menu Tutorial](https://www.youtube.com/watch?v=zc8ac_qUXQY&t=11s)  
+[Pause Menu Tutorial](https://www.youtube.com/watch?v=JivuXdrIHK0)  
 
 ## Path Finding
 [Path Finding Algorithm is referenced from this video](https://www.youtube.com/watch?v=UjkSFoLxesw)  

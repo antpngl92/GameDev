@@ -74,6 +74,10 @@ public class PistolShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GamePause.isGamePaused)
+        {
+            return;
+        }
         // Every frame, check if there is a shooting event
         Shoot();
 

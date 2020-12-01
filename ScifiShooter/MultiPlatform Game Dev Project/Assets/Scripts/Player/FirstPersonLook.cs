@@ -22,6 +22,10 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
+        if (GamePause.isGamePaused)
+        {
+            return;
+        }
         // Get smooth mouse look.
         Vector2 smoothMouseDelta = Vector2.Scale(new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")), Vector2.one * sensitivity * smoothing);
         appliedMouseDelta = Vector2.Lerp(appliedMouseDelta, smoothMouseDelta, 1 / smoothing);

@@ -70,6 +70,10 @@ public class ShotgunShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GamePause.isGamePaused)
+        {
+            return;
+        }
         Shoot();
 
         Reload();

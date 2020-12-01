@@ -61,6 +61,10 @@ public class MachineGunShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GamePause.isGamePaused)
+        {
+            return;
+        }
         Shoot();
 
         Reload();
