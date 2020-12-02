@@ -225,8 +225,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: {fileID: 5148877678845229259, guid: 735768a2fd6de1e4eb07344d67123613, type: 3}
+  CurrentLevel: 0
   enemy1: {fileID: 6011889406488080433, guid: 7fe540bb171496442b3d5ebbbbfd98cf, type: 3}
   enemy2: {fileID: 7884424822968339509, guid: ec81e0c08825569459fa6b5f9df2e6b4, type: 3}
+  enemy3: {fileID: 5553044616513885577, guid: 72db8f0938d429d418127c865d1fb529, type: 3}
+  enemy4: {fileID: 0}
   NumberOfTurrets: 4
   spawnPointsEnemies:
   - {fileID: 0}
@@ -251,6 +254,8 @@ MonoBehaviour:
   - {fileID: 0}
   YouWonText: {fileID: 401983497155987105}
   YouLostText: {fileID: 401983495537216756}
+  SecondWeaponUnlocked: 0
+  ThirdWeaponUnlocked: 0
 --- !u!82 &798079451874807709
 AudioSource:
   m_ObjectHideFlags: 0

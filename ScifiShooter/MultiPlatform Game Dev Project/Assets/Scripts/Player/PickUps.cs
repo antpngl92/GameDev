@@ -75,6 +75,10 @@ public class PickUps : MonoBehaviour
           
             pickUpSound.Play();
         }
+        else if (other.gameObject.tag == "Water")
+        {
+            gameObject.GetComponent<PlayerStatController>().TakeDamage(1000000);
+        }
 
     }
 

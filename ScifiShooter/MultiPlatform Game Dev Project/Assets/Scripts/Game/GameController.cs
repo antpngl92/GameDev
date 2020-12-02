@@ -14,9 +14,12 @@ public class GameController : MonoBehaviour
 {
     #region Variables
     [SerializeField]
-    private GameObject key;
+    public GameObject key;
+    public int CurrentLevel;
     public GameObject enemy1;
     public GameObject enemy2;
+    public GameObject enemy3;
+    public GameObject enemy4;
     public int NumberOfTurrets;
     private GameObject player;
     public GameObject[] spawnPointsEnemies;
@@ -27,6 +30,9 @@ public class GameController : MonoBehaviour
     private bool isGameFinished = false;
     private bool allKeysCollected = false;
     private int spawnedKeys;
+    public bool SecondWeaponUnlocked = false;
+    public bool ThirdWeaponUnlocked = false;
+    private const float SpawnRate = 0.25f;
     #endregion
 
 
@@ -54,14 +60,22 @@ public class GameController : MonoBehaviour
         Vector3 keyPosition = new Vector3(0, 0, 0);
         var sp = spawnPointsKey.ToList();
         // Randomly choose spawn points for every key
-        for (int i = 0; i < keysToSpawn; i++) 
+        for (int i = 0; i < keysToSpawn -1; i++) 
         {
-            var index = UnityEngine.Random.Range(0, sp.Count());
+            var index = UnityEngine.Random.Range(0, sp.Count() -1);
             Instantiate(key, sp.ElementAt(index).transform.position, Quaternion.identity);            
             spawnedKeys++;
             //Debug.Log("spawned " + spawnedKeys);
             sp.Remove(sp.ElementAt(index));
         }
+        if (spawnPointsKey.Last() != null) //Adding the last key into the spawn point manually
+        {
+            var index = UnityEngine.Random.Range(0, -1);
+            Instantiate(key, spawnPointsKey.Last().transform.position, Quaternion.identity);
+            spawnedKeys++;
+            //Debug.Log("spawned " + spawnedKeys);
+        }
+
     }
 
 
@@ -74,7 +88,20 @@ public class GameController : MonoBehaviour
         {
             isGameFinished = true;
             Start();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            if (CurrentLevel == 1)
+            {
+                SceneManager.LoadScene("Level 1");
+            }
+            else if(CurrentLevel == 2)
+            {
+                SceneManager.LoadScene("Level 2");                
+            }
+            else if (CurrentLevel == 3)
+            {
+                SceneManager.LoadScene("Level 3");
+            }
+
         }
 
         if (!isGameFinished && currentEnemyCount == 0 && currentWaveLevel >= 0 && currentWaveLevel < 3)
@@ -82,7 +109,24 @@ public class GameController : MonoBehaviour
             StartLevel(ref currentWaveLevel);
             Debug.Log(currentWaveLevel + " spawned");
             player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
+            if (CurrentLevel == 2)
+            {
+                StartLevel(ref currentWaveLevel);
+                Debug.Log(currentWaveLevel + " spawned");
+                player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
+
+                StartLevel(ref currentWaveLevel);
+                Debug.Log(currentWaveLevel + " spawned");
+                player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
+                SecondWeaponUnlocked = true;
+            }
+
+            if (CurrentLevel == 3)
+            {
+                ThirdWeaponUnlocked = true;
+            }
         }
+
 
         if (!isGameFinished && currentEnemyCount == 0 && currentWaveLevel == 3)
         {
@@ -107,12 +151,51 @@ public class GameController : MonoBehaviour
         currentWaveLevel++;
 
         player.GetComponent<PlayerStatController>().SetPlayerLevel(currentWaveLevel);
+
         //SpawnEnemies();
         foreach (var sp in spawnPointsEnemies)
         {
-            if (sp == spawnPointsEnemies.First() || (UnityEngine.Random.Range(0, 1f) < (0.2 * currentWaveLevel)))
+            if (sp == spawnPointsEnemies.First() || (UnityEngine.Random.Range(0, 1f) < (SpawnRate * currentWaveLevel)))
             {
-                var ene = Instantiate(UnityEngine.Random.Range(0, 1f) < 0.65 ? enemy1 : enemy2 , sp.transform.position, sp.transform.rotation);
+                var enemyType = enemy1;
+                if(CurrentLevel == 1)
+                {
+                    enemyType = UnityEngine.Random.Range(0, 1f) < 0.75 ? enemy1 : enemy2;
+                }
+                else if (CurrentLevel == 2)
+                {
+                    var randomFloat = UnityEngine.Random.Range(0, 1f);
+                    if (randomFloat < 0.5f)
+                    {
+                        enemyType = enemy1;
+                    }
+                    else if(randomFloat < 0.85)
+                    {
+                        enemyType = enemy2;
+                    }
+                    else if (randomFloat < 1)
+                    {
+                        enemyType = enemy3;
+                    }
+                }
+                else if (CurrentLevel == 3)
+                {
+                    var randomFloat = UnityEngine.Random.Range(0, 1f);
+                    if (randomFloat < 0.3f)
+                    {
+                        enemyType = enemy1;
+                    }
+                    else if (randomFloat < 0.6)
+                    {
+                        enemyType = enemy2;
+                    }
+                    else if (randomFloat < 1)
+                    {
+                        enemyType = enemy3;
+                    }
+                }
+
+                var ene = Instantiate(enemyType, sp.transform.position, sp.transform.rotation);
                 ene.GetComponent<EnemyController>().StartEnemies(currentWaveLevel);
                 currentEnemyCount++;
             }

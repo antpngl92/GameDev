@@ -12,6 +12,7 @@ TagManager:
   - PickUpAmmo
   - Weapon
   - Turret
+  - Water
   layers:
   - Default
   - TransparentFX
