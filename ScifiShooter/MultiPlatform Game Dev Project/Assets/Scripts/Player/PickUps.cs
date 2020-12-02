@@ -11,7 +11,7 @@ public class PickUps : MonoBehaviour
     private int haveKey;
 
     // Stores amount of keys player needs
-    private int needKey;
+    public int requiredKeyCount;
 
     // UI element and sound
     public Text keyCount;
@@ -21,11 +21,10 @@ public class PickUps : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        haveKey = 0;
-        needKey = 3;
+        haveKey = 0;        
         keyCount.text = "";
         SetCountText();
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SpawnKey(needKey);
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SpawnKey(requiredKeyCount);
     }
 
 
@@ -39,7 +38,7 @@ public class PickUps : MonoBehaviour
             other.gameObject.SetActive(false);
             haveKey++;
             SetCountText();
-            if (haveKey == needKey)
+            if (haveKey == requiredKeyCount)
             {
                 GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().OnKeysCollected();
             }
@@ -85,6 +84,6 @@ public class PickUps : MonoBehaviour
     // UI Update Method
     private void SetCountText()
     {
-        keyCount.text = "Energy Cells Collected: " + haveKey.ToString() + " / "+ needKey.ToString();
+        keyCount.text = "Energy Cells Collected: " + haveKey.ToString() + " / "+ requiredKeyCount.ToString();
     }
 }

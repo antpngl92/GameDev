@@ -61,7 +61,7 @@ public class WeaponSwitching : MonoBehaviour
         {
             selectedWeapon = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && secondWeaponUnlocked)
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && (secondWeaponUnlocked || thirdWeaponUnlocked))
         {
             selectedWeapon = 1;
         }

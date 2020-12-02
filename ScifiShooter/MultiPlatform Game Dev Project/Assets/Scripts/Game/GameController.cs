@@ -28,11 +28,14 @@ public class GameController : MonoBehaviour
     public Text YouWonText;
     public Text YouLostText;
     private bool isGameFinished = false;
+    private bool playerLost = false;
     private bool allKeysCollected = false;
     private int spawnedKeys;
     public bool SecondWeaponUnlocked = false;
     public bool ThirdWeaponUnlocked = false;
     private const float SpawnRate = 0.25f;
+    public GameObject bossSpawnPoint;
+    private bool isBossDead;
     #endregion
 
 
@@ -89,17 +92,29 @@ public class GameController : MonoBehaviour
             isGameFinished = true;
             Start();
 
-            if (CurrentLevel == 1)
+            if (CurrentLevel == 1 && playerLost)
             {
                 SceneManager.LoadScene("Level 1");
             }
-            else if(CurrentLevel == 2)
+            else if(CurrentLevel == 2 && playerLost)
             {
                 SceneManager.LoadScene("Level 2");                
             }
-            else if (CurrentLevel == 3)
+            else if (CurrentLevel == 3 && playerLost)
             {
                 SceneManager.LoadScene("Level 3");
+            }
+            else if (CurrentLevel == 1 && !playerLost)
+            {
+                SceneManager.LoadScene("Level 2");
+            }
+            else if (CurrentLevel == 2 && !playerLost)
+            {
+                SceneManager.LoadScene("Level 3");
+            }
+            else if (CurrentLevel == 3 && !playerLost)
+            {
+                SceneManager.LoadScene("MainMenu");
             }
 
         }
@@ -121,9 +136,11 @@ public class GameController : MonoBehaviour
                 SecondWeaponUnlocked = true;
             }
 
-            if (CurrentLevel == 3)
+            if (CurrentLevel == 3 && currentWaveLevel == 1)
             {
                 ThirdWeaponUnlocked = true;
+                var ene = Instantiate(enemy4, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
+                ene.GetComponent<EnemyController>().StartEnemies(1);                
             }
         }
 
@@ -135,7 +152,7 @@ public class GameController : MonoBehaviour
                 Debug.Log("Check the enemy count it is bugged!");
             }
 
-            if (allKeysCollected)
+            if ((allKeysCollected && CurrentLevel != 3) || (allKeysCollected && CurrentLevel == 3 && isBossDead))
             {
                 GameWon();
             }
@@ -194,6 +211,7 @@ public class GameController : MonoBehaviour
                         enemyType = enemy3;
                     }
                 }
+                
 
                 var ene = Instantiate(enemyType, sp.transform.position, sp.transform.rotation);
                 ene.GetComponent<EnemyController>().StartEnemies(currentWaveLevel);
@@ -210,9 +228,12 @@ public class GameController : MonoBehaviour
         {
             return; //No need to decrease enemy count if it is a turret
         }
+        else if (enemy.name.Contains("Boss"))
+        {
+            isBossDead = true;//No need to decrease enemy count if it is a bass
+        }
         else
         {
-
             currentEnemyCount--;
         }
     }
@@ -226,9 +247,19 @@ public class GameController : MonoBehaviour
     {
         player.GetComponent<PlayerStatController>().FreezePlayer();
 
-        YouWonText.text = "You Won!\n" + "Time Spent: " + Time.timeSinceLevelLoad + "\n" +
-            "Press SPACE TO TRY AGAIN!";
+        if (CurrentLevel == 3)
+        {
+            YouWonText.text = "You Won!\n" + "Time Spent: " + Time.timeSinceLevelLoad + "\n" +
+                "Press SPACE to return main menu";
+        }
+        else
+        {
+            YouWonText.text = "You cleared the level!\n" + "Time Spent: " + Time.timeSinceLevelLoad + "\n" +
+            "Press SPACE to move on to the next level";
+        }
+
         isGameFinished = true;
+        playerLost = false;
 
     }
 
@@ -236,8 +267,9 @@ public class GameController : MonoBehaviour
     {
         player.GetComponent<PlayerStatController>().FreezePlayer();
         
-        YouLostText.text = "You Lost!\nPress SPACE TO TRY AGAIN!";
+        YouLostText.text = "You Died!\nPress SPACE TO TRY AGAIN!";
         //currentWaveLevel = 0;
+        playerLost = true;
         isGameFinished = true;
     }
 }
