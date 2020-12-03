@@ -96,6 +96,7 @@ public class GameController : MonoBehaviour
             isGameFinished = true;
             Start();
 
+            Cursor.visible = false;
             if (CurrentLevel == 1 && playerLost)
             {
                 SceneManager.LoadScene("Level 1");
@@ -172,7 +173,7 @@ public class GameController : MonoBehaviour
     {
         currentWaveLevel++;
 
-        player.GetComponent<PlayerStatController>().SetPlayerLevel(CurrentLevel);
+        player.GetComponent<PlayerStatController>().SetPlayerLevel(CurrentLevel, currentWaveLevel);
 
         //SpawnEnemies();
         foreach (var sp in spawnPointsEnemies)

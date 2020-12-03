@@ -80,6 +80,16 @@ public class ShotgunShoot : MonoBehaviour
 
         UpdateUI();
     }
+
+    public void OnLeveledUp(int currentWaveLevel)
+    {
+        currentMagAmmo += 20;
+        damage += 20;
+        maxReserveAmmo += 30;
+        fireRate -= 0.005f;
+        recoilIntensity -= 0.005f;
+    }
+
     void Shoot()
     {
         if (isReloading)

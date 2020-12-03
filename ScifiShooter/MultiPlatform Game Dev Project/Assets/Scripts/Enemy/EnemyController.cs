@@ -250,7 +250,7 @@ public class EnemyController : MonoBehaviour
         this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         
         // Randomly generate health pickups upon death
-        if (UnityEngine.Random.value < 0.1f)
+        if (UnityEngine.Random.value < 0.3f)
         {
             var healthPickUp = GameObject.FindGameObjectWithTag("PickUpHealth");
             Instantiate(healthPickUp, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);

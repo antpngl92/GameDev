@@ -36,7 +36,7 @@ public class PlayerStatController : MonoBehaviour
     }
 
     // Every wave, modify player statistics
-    public void SetPlayerLevel(int CurrentLevel)
+    public void SetPlayerLevel(int CurrentLevel, int currentWaveLevel)
     {//TODO Ertugrul: Make this upgradeable
         Level = CurrentLevel;
         Health = Mathf.Clamp(100 + ((CurrentLevel - 1) * 50), 0, 100 + ((CurrentLevel - 1) * 50));
@@ -44,8 +44,10 @@ public class PlayerStatController : MonoBehaviour
         //gameObject.GetComponent<PlayerMove>().speed += currentWaveLevel * 0.5f;
         //This causes coupling so it is better to combine stat and movement after the prototype
         
+        GameObject.FindGameObjectWithTag("Weapon").GetComponent<PistolShoot>()?.OnLeveledUp(currentWaveLevel);
+        GameObject.FindGameObjectWithTag("Weapon").GetComponent<ShotgunShoot>()?.OnLeveledUp(currentWaveLevel);
+        GameObject.FindGameObjectWithTag("Weapon").GetComponent<MachineGunShoot>()?.OnLeveledUp(currentWaveLevel);
 
-        //GameObject.FindGameObjectWithTag("Weapon").GetComponent<PistolShoot>()?.OnLeveledUp(CurrentLevel);
         UpdatePlayerStatsTexts();
        
     }
