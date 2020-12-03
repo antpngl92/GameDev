@@ -87,6 +87,10 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         // Reset game if player has won or lost the game.
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
         if (isGameFinished && Input.GetKeyDown(KeyCode.Space))
         {
             isGameFinished = true;
@@ -123,6 +127,7 @@ public class GameController : MonoBehaviour
         {
             StartLevel(ref currentWaveLevel);
             Debug.Log(currentWaveLevel + " spawned");
+            SecondWeaponUnlocked = true;
             player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
             if (CurrentLevel == 2)
             {
@@ -133,7 +138,7 @@ public class GameController : MonoBehaviour
                 StartLevel(ref currentWaveLevel);
                 Debug.Log(currentWaveLevel + " spawned");
                 player.GetComponent<PlayerStatController>().UpdateWaveText(currentWaveLevel);
-                SecondWeaponUnlocked = true;
+                ThirdWeaponUnlocked = true;
             }
 
             if (CurrentLevel == 3 && currentWaveLevel == 1)
@@ -167,7 +172,7 @@ public class GameController : MonoBehaviour
     {
         currentWaveLevel++;
 
-        player.GetComponent<PlayerStatController>().SetPlayerLevel(currentWaveLevel);
+        player.GetComponent<PlayerStatController>().SetPlayerLevel(CurrentLevel);
 
         //SpawnEnemies();
         foreach (var sp in spawnPointsEnemies)
@@ -267,7 +272,7 @@ public class GameController : MonoBehaviour
     {
         player.GetComponent<PlayerStatController>().FreezePlayer();
         
-        YouLostText.text = "You Died!\nPress SPACE TO TRY AGAIN!";
+        YouLostText.text = "You Died!\nPress SPACE TO TRY AGAIN!\nPress BACKSPACE for main menu";
         //currentWaveLevel = 0;
         playerLost = true;
         isGameFinished = true;

@@ -19,6 +19,7 @@ public class PlayerStatController : MonoBehaviour
     public Text HealthText;
     public Text ArmorText;
     public Text LevelText;
+    public Text PlayerLevelText;
 
     public AudioSource audio;
 
@@ -35,14 +36,16 @@ public class PlayerStatController : MonoBehaviour
     }
 
     // Every wave, modify player statistics
-    public void SetPlayerLevel(int currentWaveLevel)
+    public void SetPlayerLevel(int CurrentLevel)
     {//TODO Ertugrul: Make this upgradeable
-        Level = currentWaveLevel;
-        Health = Mathf.Clamp(Health + 30, 0, 100);
-        Armor += Level * 0.1f;
+        Level = CurrentLevel;
+        Health = Mathf.Clamp(100 + ((CurrentLevel - 1) * 50), 0, 100 + ((CurrentLevel - 1) * 50));
+        Armor = CurrentLevel * 0.1f;
         //gameObject.GetComponent<PlayerMove>().speed += currentWaveLevel * 0.5f;
         //This causes coupling so it is better to combine stat and movement after the prototype
-     //   GameObject.FindGameObjectWithTag("Weapon").GetComponent<PistolShoot>().OnLeveledUp(currentWaveLevel);
+        
+
+        //GameObject.FindGameObjectWithTag("Weapon").GetComponent<PistolShoot>()?.OnLeveledUp(CurrentLevel);
         UpdatePlayerStatsTexts();
        
     }
@@ -52,7 +55,9 @@ public class PlayerStatController : MonoBehaviour
     {
         HealthText.text = "♥" + Health.ToString();
         ArmorText.text = "Armor %" + Armor.ToString();
-        UpdateWaveText(Level);
+        //LevelText.text = "Player Level: " + Level;
+        PlayerLevelText.text = "Level: " + Level.ToString();
+        //UpdateWaveText(Level);
     }
 
     // Handling player taking damage
@@ -92,8 +97,6 @@ public class PlayerStatController : MonoBehaviour
 
         audio.Play();
 
-        UpdatePlayerStatsTexts();
-
         // If player dies
         if (Health <= 0)
         {
@@ -101,12 +104,16 @@ public class PlayerStatController : MonoBehaviour
             Invoke(nameof(GameOver), 0.2f);
             audio.Play();
         }
+
+        UpdatePlayerStatsTexts();
+
+
     }
 
     public void OnHealthPickedUp()
     {
             
-        Health = Mathf.Clamp(Health + 25, 0, 100);
+        Health = Mathf.Clamp(Health + 25, 0, 100 * Level);
        
         UpdatePlayerStatsTexts();
     }

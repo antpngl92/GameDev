@@ -315,9 +315,9 @@ MonoBehaviour:
   UI: {fileID: 332742569041617597}
   NameText: {fileID: 332742569440304947}
   healthBar: {fileID: 332742570521267676}
-  Level: 5
-  Health: 100
-  Armor: 0.1
+  Level: 4
+  Health: 500
+  Armor: 0
   EnemyDamagePower: 35
   GroundLayerMask:
     serializedVersion: 2

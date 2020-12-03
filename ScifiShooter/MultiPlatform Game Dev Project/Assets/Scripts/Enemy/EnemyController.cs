@@ -225,12 +225,12 @@ public class EnemyController : MonoBehaviour
         if (Armor > 0 )
         {
             var value = Mathf.RoundToInt((float)damage * (1 - Armor));
-            Health = Mathf.Clamp(Health - value, 0, 100);
+            Health = Mathf.Clamp(Health - value, 0, Health);
 
         }
         else
         {
-            Health = Mathf.Clamp(Health - damage, 0, 100);
+            Health = Mathf.Clamp(Health - damage, 0, Health);
         }
 
         animator.Play("Base Layer.GettingDamage");
@@ -266,7 +266,7 @@ public class EnemyController : MonoBehaviour
         gameController.GetComponent<GameController>().OnEnemyDestroyed(gameObject);
 
         
-        Invoke("DeleteEnemy", 0.3f);
+        Invoke("DeleteEnemy", 0.2f);
 
     }
 
