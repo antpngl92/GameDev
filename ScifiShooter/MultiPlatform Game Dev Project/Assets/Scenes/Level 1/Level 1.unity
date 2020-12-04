@@ -6192,7 +6192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114048599433676842, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: firingRange
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114048599433676842, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: EnemyDamagePower
@@ -15410,7 +15410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114048599433676842, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: firingRange
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114048599433676842, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: EnemyDamagePower
@@ -27952,7 +27952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114048599433676842, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: firingRange
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114048599433676842, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: EnemyDamagePower
@@ -27961,6 +27961,10 @@ PrefabInstance:
     - target: {fileID: 114048599433676842, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: Level
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114048599433676842, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
+      propertyPath: AttackInterval
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 135749318806271514, guid: f72d03e48b3dbfd4ca0f692e695377c3, type: 3}
       propertyPath: m_Enabled
@@ -51770,6 +51774,14 @@ PrefabInstance:
     - target: {fileID: 7555489666033813005, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
       propertyPath: m_Name
       value: Turret Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586414464000833305, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
+      propertyPath: firingRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586414464000833305, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
+      propertyPath: AttackInterval
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}

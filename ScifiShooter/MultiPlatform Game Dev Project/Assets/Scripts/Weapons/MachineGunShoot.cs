@@ -137,6 +137,15 @@ public class MachineGunShoot : MonoBehaviour
         }
     }
 
+    public void OnLeveledUp(int currentWaveLevel)
+    {
+        currentMagAmmo += 20;
+        damage += 20;
+        maxReserveAmmo += 30;
+        fireRate -= 0.005f;
+        recoilIntensity -= 0.005f;
+    }
+
     void Reload()
     {
         // If the user has ammo to reload with, and if they have shot at least once
