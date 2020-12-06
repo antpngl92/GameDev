@@ -163,7 +163,7 @@ MonoBehaviour:
     m_Bits: 512
   WalkingPointRange: 6
   AttackInterval: 1
-  AiSightRange: 50
+  AiSightRange: 60
   AiAttackRange: 5
   hitPlayerSound: {fileID: 5554807005097760071}
   deathEffect: {fileID: 5585671604984661011, guid: c8024b1c8dba5ac45ac354c95aaf3221, type: 3}
