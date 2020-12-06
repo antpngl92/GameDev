@@ -20333,7 +20333,7 @@ MonoBehaviour:
   Armor: 0
   EnemyDamagePower: 0
   player: {fileID: 0}
-  AttackInterval: 1
+  AttackInterval: 0.5
   go_baseRotation: {fileID: 7553605945732658265}
   go_GunBody: {fileID: 7551469507357796117}
   go_barrel: {fileID: 7551750383959016157}

@@ -214,7 +214,7 @@ MonoBehaviour:
   currentMagAmmo: 30
   currentReserveAmmo: 300
   weaponRange: 100
-  reloadTime: 3
+  reloadTime: 2
   fireRate: 0.2
   recoilIntensity: 5
   camera: {fileID: 0}

@@ -122,6 +122,7 @@ public class PlayerStatController : MonoBehaviour
         }
 
         audio.Play();
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().shakeDuration = 0.3f;
 
         // If player dies
         if (Health <= 0)

@@ -26,11 +26,11 @@ public class WeaponSwitching : MonoBehaviour
     {
         var secondWeaponUnlocked = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().SecondWeaponUnlocked;
         var thirdWeaponUnlocked = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().ThirdWeaponUnlocked;
-        if (secondWeaponUnlocked)
+        if (secondWeaponUnlocked && !thirdWeaponUnlocked)
         {
             maxWeaponCount = 2;
         }
-        else if (thirdWeaponUnlocked)
+        else if (secondWeaponUnlocked && thirdWeaponUnlocked)
         {
             maxWeaponCount = 3;
         }

@@ -1777,7 +1777,7 @@ Animator:
   m_GameObject: {fileID: 8155533566875335504}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 24f8d6aa660f9444ab0544d85c672e4a, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d3031a09092bc748960a4a83b08a337, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1793,13 +1793,13 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8155533566875335504}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: -203655887218126122, guid: e324b85cace1d2d43a8affdb7bab9e03, type: 3}
   m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 1
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &8155533566875335506
 GameObject:
