@@ -2,8 +2,11 @@
 
 ## Asset References: 
 [Font Used: AquireBold-8Ma60](https://fontsme.com/aquire.font)
+
 [Boss](https://assetstore.unity.com/packages/3d/characters/robots/robot-metallic-humanoid-171295)
+
 [Pickupable items](https://assetstore.unity.com/packages/3d/environments/sci-fi/energy-cells-free-166830)
+
 [Enemies](https://assetstore.unity.com/packages/3d/characters/robots/tiny-robots-pack-98930)
 
 ## Audio Used: 
