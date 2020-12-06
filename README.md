@@ -2,9 +2,9 @@
 
 ## Asset References: 
 [Font Used: AquireBold-8Ma60](https://fontsme.com/aquire.font)
-[Boss]https://assetstore.unity.com/packages/3d/characters/robots/robot-metallic-humanoid-171295
-[Pickupable items]https://assetstore.unity.com/packages/3d/environments/sci-fi/energy-cells-free-166830
-[Enemies]https://assetstore.unity.com/packages/3d/characters/robots/tiny-robots-pack-98930
+[Boss](https://assetstore.unity.com/packages/3d/characters/robots/robot-metallic-humanoid-171295)
+[Pickupable items](https://assetstore.unity.com/packages/3d/environments/sci-fi/energy-cells-free-166830)
+[Enemies](https://assetstore.unity.com/packages/3d/characters/robots/tiny-robots-pack-98930)
 
 ## Audio Used: 
 [Enemy Attack](https://www.soundboard.com/sb/sound/897791)  
@@ -18,7 +18,7 @@
 ## First Person Controller 
 [Tutorial for Movement](https://www.youtube.com/watch?v=_QajrabyTJc)  
 [MouseLook script](https://assetstore.unity.com/packages/tools/input-management/mini-first-person-controller-174710)  
-[Camera Shake]https://gist.github.com/ftvs/5822103
+[Camera Shake](https://gist.github.com/ftvs/5822103)
 
 
 ## Weapon 
