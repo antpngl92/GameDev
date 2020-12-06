@@ -8224,6 +8224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret Left (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7586414464000833305, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
+      propertyPath: Health
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
 --- !u!4 &238460585 stripped
@@ -10113,6 +10117,10 @@ PrefabInstance:
     - target: {fileID: 7555489666033813005, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
       propertyPath: m_Name
       value: Turret Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586414464000833305, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
+      propertyPath: Health
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
@@ -30426,6 +30434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret Left (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7586414464000833305, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
+      propertyPath: Health
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
 --- !u!4 &983994853 stripped
@@ -41167,6 +41179,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 418743546018263403, guid: 94bbef121efa8e043b4cf7dd2b2c0166, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -746.7
+      objectReference: {fileID: 0}
     - target: {fileID: 5265454556623293328, guid: 94bbef121efa8e043b4cf7dd2b2c0166, type: 3}
       propertyPath: pickUpSound
       value: 
@@ -41174,6 +41190,14 @@ PrefabInstance:
     - target: {fileID: 5265454556623293328, guid: 94bbef121efa8e043b4cf7dd2b2c0166, type: 3}
       propertyPath: requiredKeyCount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265454557993116644, guid: 94bbef121efa8e043b4cf7dd2b2c0166, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -747.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265454557993116644, guid: 94bbef121efa8e043b4cf7dd2b2c0166, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -398.4
       objectReference: {fileID: 0}
     - target: {fileID: 7499725162166842786, guid: 94bbef121efa8e043b4cf7dd2b2c0166, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41697,6 +41721,10 @@ PrefabInstance:
     - target: {fileID: 7555489666033813005, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
       propertyPath: m_Name
       value: Turret Left (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586414464000833305, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
+      propertyPath: Health
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
@@ -49741,6 +49769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret Left (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7586414464000833305, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
+      propertyPath: Health
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
 --- !u!4 &1623376480 stripped
@@ -55959,6 +55991,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret Left (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7586414464000833305, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
+      propertyPath: Health
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
 --- !u!4 &1865751136 stripped
@@ -61198,6 +61234,10 @@ PrefabInstance:
     - target: {fileID: 7555489666033813005, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
       propertyPath: m_Name
       value: Turret Left (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586414464000833305, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}
+      propertyPath: Health
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e4caf12204b1a5448fa3cd42ba3399f, type: 3}

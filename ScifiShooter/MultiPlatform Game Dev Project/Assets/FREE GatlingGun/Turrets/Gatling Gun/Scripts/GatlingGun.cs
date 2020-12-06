@@ -60,8 +60,8 @@ public class GatlingGun : MonoBehaviour
         shoot = GetComponent<AudioSource>();
 
         Level = level;
-        Health = 100;
-        EnemyDamagePower = 100; // This could be changed based on level
+        Health = 300 * level;
+        EnemyDamagePower = 30 * level; // This could be changed based on level
         healthBar.maxValue = Health;
         healthBar.minValue = 0;
         healthBar.value = Health;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponSwitching : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class WeaponSwitching : MonoBehaviour
     public GameObject[] weapons = new GameObject[3];
     private int selectedWeapon = 0;
     private int maxWeaponCount = 1;
+
+    public Text Weapon1Text;
+    public Text Weapon2Text;
+    public Text Weapon3Text;
 
     void Start()
     {
@@ -85,6 +90,28 @@ public class WeaponSwitching : MonoBehaviour
                 weapons[i].gameObject.SetActive(false);
             }
         }
-        
+
+        Weapon1Text.color = Color.black;
+        Weapon2Text.color = Color.black;
+        Weapon3Text.color = Color.black;
+        Weapon1Text.fontStyle = FontStyle.Normal;
+        Weapon2Text.fontStyle = FontStyle.Normal;
+        Weapon3Text.fontStyle = FontStyle.Normal;
+
+        if (selectedWeapon == 0)
+        {
+            Weapon1Text.color = Color.red;
+            Weapon1Text.fontStyle = FontStyle.Bold;
+        }
+        else if (selectedWeapon == 1)
+        {
+            Weapon2Text.color = Color.red;
+            Weapon2Text.fontStyle = FontStyle.Bold;
+        }
+        else if (selectedWeapon == 2)
+        {
+            Weapon3Text.color = Color.red;
+            Weapon3Text.fontStyle = FontStyle.Bold;
+        }
     }
 }

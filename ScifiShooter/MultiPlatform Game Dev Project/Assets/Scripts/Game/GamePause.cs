@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GamePause : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class GamePause : MonoBehaviour
             {
                 Pause();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

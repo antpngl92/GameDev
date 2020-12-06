@@ -89,6 +89,7 @@ public class GameController : MonoBehaviour
         // Reset game if player has won or lost the game.
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("MainMenu");
         }
         if (isGameFinished && Input.GetKeyDown(KeyCode.Space))
@@ -255,13 +256,13 @@ public class GameController : MonoBehaviour
 
         if (CurrentLevel == 3)
         {
-            YouWonText.text = "You Won!\n" + "Time Spent: " + Time.timeSinceLevelLoad + "\n" +
+            YouWonText.text = "You Won!\n" + "Total time spent: " + Time.time.ToString("#.##") + " secs\n" +
                 "Press SPACE to return main menu";
         }
         else
         {
-            YouWonText.text = "You cleared the level!\n" + "Time Spent: " + Time.timeSinceLevelLoad + "\n" +
-            "Press SPACE to move on to the next level";
+            YouWonText.text = "You cleared the level!\n" + "A new weapon unlocked!\n" + "Time spent on this level: " + Time.timeSinceLevelLoad.ToString("#.##") + " secs\n" +
+            "Press SPACE to move to the next level";
         }
 
         isGameFinished = true;

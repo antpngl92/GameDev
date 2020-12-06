@@ -20329,7 +20329,7 @@ MonoBehaviour:
   NameText: {fileID: 971816904630025084}
   healthBar: {fileID: 5315508030924362002}
   Level: 1
-  Health: 100
+  Health: 500
   Armor: 0
   EnemyDamagePower: 0
   player: {fileID: 0}

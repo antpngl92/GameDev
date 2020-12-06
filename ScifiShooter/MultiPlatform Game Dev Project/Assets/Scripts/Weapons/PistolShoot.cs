@@ -140,6 +140,79 @@ public class PistolShoot : MonoBehaviour
                     //Debug.Log("Hit!");
                 }
             }
+            var rayPosition = camera.transform.forward + new Vector3(0, 0.3f, 0);
+            if (Physics.Raycast(ray, rayPosition, out hit, weaponRange))
+            {
+                if (hit.transform.gameObject.tag == "Enemy")
+                {
+                    hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
+                    //Debug.Log("Enemy hit!");
+                }
+                else if (hit.transform.gameObject.tag == "Turret")
+                {
+                    hit.transform.gameObject.GetComponent<GatlingGun>().TakeDamage(damage);
+                    //Debug.Log("Turret hit!");
+                }
+                else
+                {
+                    //Debug.Log("Hit!");
+                }
+            }
+            
+            rayPosition = camera.transform.forward + new Vector3(0, -0.3f, 0);
+            if (Physics.Raycast(ray, rayPosition, out hit, weaponRange))
+            {
+                if (hit.transform.gameObject.tag == "Enemy")
+                {
+                    hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
+                    //Debug.Log("Enemy hit!");
+                }
+                else if (hit.transform.gameObject.tag == "Turret")
+                {
+                    hit.transform.gameObject.GetComponent<GatlingGun>().TakeDamage(damage);
+                    //Debug.Log("Turret hit!");
+                }
+                else
+                {
+                    //Debug.Log("Hit!");
+                }
+            }
+            rayPosition = camera.transform.forward + new Vector3(0.3f, 0, 0);
+            if (Physics.Raycast(ray, rayPosition, out hit, weaponRange))
+            {
+                if (hit.transform.gameObject.tag == "Enemy")
+                {
+                    hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
+                    //Debug.Log("Enemy hit!");
+                }
+                else if (hit.transform.gameObject.tag == "Turret")
+                {
+                    hit.transform.gameObject.GetComponent<GatlingGun>().TakeDamage(damage);
+                    //Debug.Log("Turret hit!");
+                }
+                else
+                {
+                    //Debug.Log("Hit!");
+                }
+            }
+            rayPosition = camera.transform.forward + new Vector3(-0.3f, 0, 0);
+            if (Physics.Raycast(ray, rayPosition, out hit, weaponRange))
+            {
+                if (hit.transform.gameObject.tag == "Enemy")
+                {
+                    hit.transform.gameObject.GetComponent<EnemyController>().TakeDamage(damage);
+                    //Debug.Log("Enemy hit!");
+                }
+                else if (hit.transform.gameObject.tag == "Turret")
+                {
+                    hit.transform.gameObject.GetComponent<GatlingGun>().TakeDamage(damage);
+                    //Debug.Log("Turret hit!");
+                }
+                else
+                {
+                    //Debug.Log("Hit!");
+                }
+            }
         }
     }
 

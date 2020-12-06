@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
         Level = level;
         Health *= Level;
         Armor = Mathf.Clamp(Armor * Level, 0.0f, 1f);
-        EnemyDamagePower = EnemyDamagePower * Level;
+        EnemyDamagePower = EnemyDamagePower * (Level / 2);
         healthBar.maxValue = Health;
         healthBar.minValue = 0;
         healthBar.value = Health;

@@ -266,7 +266,7 @@ MonoBehaviour:
   Level: 1
   Health: 100
   Armor: 0.1
-  EnemyDamagePower: 20
+  EnemyDamagePower: 15
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -274,7 +274,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   WalkingPointRange: 5
-  AttackInterval: 1
+  AttackInterval: 2
   AiSightRange: 20
   AiAttackRange: 2
   hitPlayerSound: {fileID: 2711359269913234757}

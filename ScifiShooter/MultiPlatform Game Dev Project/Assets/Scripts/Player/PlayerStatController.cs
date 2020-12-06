@@ -20,7 +20,9 @@ public class PlayerStatController : MonoBehaviour
     public Text ArmorText;
     public Text LevelText;
     public Text PlayerLevelText;
-
+    public Text Weapon1Text;
+    public Text Weapon2Text;
+    public Text Weapon3Text;
     public AudioSource audio;
 
     public AudioClip takingDamage1;
@@ -33,6 +35,11 @@ public class PlayerStatController : MonoBehaviour
     {
         //SetPlayerLevel(1);
         audio = GetComponent<AudioSource>();
+    }
+
+    private void WeaponSelectUpdate()
+    {
+
     }
 
     // Every wave, modify player statistics
@@ -49,7 +56,24 @@ public class PlayerStatController : MonoBehaviour
         GameObject.FindGameObjectWithTag("Weapon").GetComponent<MachineGunShoot>()?.OnLeveledUp(currentWaveLevel);
 
         UpdatePlayerStatsTexts();
-       
+        if(CurrentLevel == 1)
+        {
+            Weapon1Text.text = "1";
+            Weapon2Text.text = "2";
+            Weapon3Text.text = "X";
+        }
+        if (CurrentLevel == 2)
+        {
+            Weapon1Text.text = "1";
+            Weapon2Text.text = "2";
+            Weapon3Text.text = "3";
+        }
+        if (CurrentLevel == 3)
+        {
+            Weapon1Text.text = "1";
+            Weapon2Text.text = "2";
+            Weapon3Text.text = "3";
+        }
     }
 
     // UI Update Method
@@ -58,7 +82,7 @@ public class PlayerStatController : MonoBehaviour
         HealthText.text = "♥" + Health.ToString();
         ArmorText.text = "Armor %" + Armor.ToString();
         //LevelText.text = "Player Level: " + Level;
-        PlayerLevelText.text = "Level: " + Level.ToString();
+        PlayerLevelText.text = "Char. Level: " + Level.ToString();
         //UpdateWaveText(Level);
     }
 
